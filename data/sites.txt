@@ -1,1 +1,2 @@
-url=awfwaf
+www.google.com
+www.example.com

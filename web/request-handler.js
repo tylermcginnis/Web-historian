@@ -16,6 +16,10 @@ var handleRequest = function (req, res) {
 };
 
 var handleGet = function(request, response){
+  request.on('error', function(){
+    response.writeHead(404);
+    response.end();
+  });
   var htmlFile = fs.createReadStream('../data/sites.txt');
   htmlFile.pipe(response);
 };
@@ -26,13 +30,14 @@ var handlePost = function(request, response){
     result+=chunk;
   });
   request.on('end', function(){
-    var parsedData = result.toString();
-    fs.writeFile('../data/sites.txt', parsedData, function(err){
+    var parsedData = result.toString() + '\n';
+    var newParsed = parsedData.slice(4);
+    fs.appendFile('../data/sites.txt', newParsed, function(err){
       if(err){
         console.log('there was an error');
         response.writeHead(404);
       } else{
-        console.log('Successfully wrote to file');
+        handleStaticRequests(request, response); 
       }
     });
   });
