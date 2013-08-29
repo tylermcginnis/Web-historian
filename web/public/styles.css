@@ -1,4 +1,35 @@
+html {
+  margin: 0px;
+  padding: 0px;
+  background: rgb(243, 243, 243);
+}
+
 body {
   margin : 0px;
   font-family: arial, sans-serif;
+}
+
+#container{
+  width: 50%;
+  margin:30px auto;
+  text-align: center;
+  height: 500px;
+  box-shadow: 0px 0px 5px solid;
+}
+
+#text{
+  margin: 10px;
+  font-size: 60px;
+}
+
+input[type="input"] {
+  font-size: 20px;
+}
+
+input[type="submit"] {
+  font-size: 17px;
+}
+
+#get{
+  float: left;
 }
